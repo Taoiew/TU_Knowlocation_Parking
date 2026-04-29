@@ -25,11 +25,11 @@ type ParkingArea = {
 // Key = parking area name, value = allowed user types
 // ============================================================
 const FALLBACK_ALLOWED_TYPES: Record<string, UserType[]> = {
-    "GYM 7":      ["staff", "general"],
-    "Parking 1":  ["staff", "general", "disabled"],
-    "Parking 2":  ["staff"],                          // บุคลากรเท่านั้น
-    "Parking 3":  ["staff", "general"],
-    "Parking 4":  ["staff", "disabled"],
+    "GYM 7": ["staff", "general"],
+    "Parking 1": ["staff", "general", "disabled"],
+    "Parking 2": ["staff"],                          // บุคลากรเท่านั้น
+    "Parking 3": ["staff", "general"],
+    "Parking 4": ["staff", "disabled"],
 };
 
 function getAllowedTypes(area: ParkingArea): UserType[] {
@@ -104,8 +104,8 @@ const createCustomIcon = (available: number, dimmed: boolean) => {
     const colorClass = dimmed
         ? "bg-gray-300"
         : isFull
-        ? "bg-red-500"
-        : "bg-emerald-500";
+            ? "bg-red-500"
+            : "bg-emerald-500";
     const pulse = dimmed ? "" : `<div class="absolute inset-0 rounded-full ${colorClass} opacity-20 animate-ping"></div>`;
     return L.divIcon({
         className: "custom-leaflet-icon",
@@ -197,7 +197,7 @@ export default function ParkingList() {
                                                 key={f.value}
                                                 className={`px-2 py-0.5 rounded-full text-xs font-medium ${f.badgeBg} ${f.badgeText}`}
                                             >
-                                                {f.emoji} {f.label}
+                                                {f.label}
                                             </span>
                                         ))}
                                     </div>
@@ -253,11 +253,10 @@ export default function ParkingList() {
                                     {/* Count badge */}
                                     {opt.value !== "all" && (
                                         <span
-                                            className={`ml-0.5 px-1.5 py-0.5 rounded-full text-xs font-bold leading-none ${
-                                                isActive
+                                            className={`ml-0.5 px-1.5 py-0.5 rounded-full text-xs font-bold leading-none ${isActive
                                                     ? "bg-white/25 text-white"
                                                     : "bg-gray-100 text-gray-500"
-                                            }`}
+                                                }`}
                                         >
                                             {areas.filter((a) =>
                                                 getAllowedTypes(a).includes(opt.value)
@@ -317,16 +316,14 @@ export default function ParkingList() {
                                     <div className="p-5 pl-6">
                                         {/* Top row */}
                                         <div className="flex justify-between items-start mb-3">
-                                            <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
-                                                <span className="bg-gray-100 p-1.5 rounded-lg">🅿️</span>
+                                            <h3 className="text-lg font-bold text-gray-900">
                                                 {area.name}
                                             </h3>
                                             <span
-                                                className={`px-3 py-1 text-xs font-bold rounded-full ${
-                                                    area.available_slots > 0
+                                                className={`px-3 py-1 text-xs font-bold rounded-full ${area.available_slots > 0
                                                         ? "bg-emerald-100 text-emerald-700"
                                                         : "bg-red-100 text-red-600"
-                                                }`}
+                                                    }`}
                                             >
                                                 {area.available_slots > 0 ? "OPEN" : "FULL"}
                                             </span>
@@ -339,9 +336,9 @@ export default function ParkingList() {
                                             ).map((f) => (
                                                 <span
                                                     key={f.value}
-                                                    className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${f.badgeBg} ${f.badgeText}`}
+                                                    className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${f.badgeBg} ${f.badgeText}`}
                                                 >
-                                                    {f.emoji} {f.label}
+                                                    {f.label}
                                                 </span>
                                             ))}
                                         </div>
@@ -349,11 +346,10 @@ export default function ParkingList() {
                                         {/* Slot count */}
                                         <div className="flex items-end gap-1 mb-2">
                                             <span
-                                                className={`text-4xl font-extrabold ${
-                                                    area.available_slots > 0
+                                                className={`text-4xl font-extrabold ${area.available_slots > 0
                                                         ? "text-emerald-500"
                                                         : "text-red-500"
-                                                }`}
+                                                    }`}
                                             >
                                                 {area.available_slots}
                                             </span>
@@ -365,11 +361,10 @@ export default function ParkingList() {
                                         {/* Progress bar */}
                                         <div className="h-1.5 w-full bg-gray-100 rounded-full mt-4 overflow-hidden">
                                             <div
-                                                className={`h-full rounded-full transition-all duration-700 ease-out ${
-                                                    area.available_slots > 0
+                                                className={`h-full rounded-full transition-all duration-700 ease-out ${area.available_slots > 0
                                                         ? "bg-gradient-to-r from-emerald-400 to-emerald-500"
                                                         : "bg-red-400"
-                                                }`}
+                                                    }`}
                                                 style={{
                                                     width: `${(area.available_slots / area.total_slots) * 100}%`,
                                                 }}

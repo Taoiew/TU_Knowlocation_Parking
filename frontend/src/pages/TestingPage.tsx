@@ -337,7 +337,7 @@ export default function TestingPage() {
                     </div>
                 )}
 
-                <section className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
+                <section className="grid gap-6">
                     <div className="rounded-[28px] border border-white/70 bg-white/90 p-6 shadow-lg shadow-slate-200/50">
                         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                             <div>
@@ -421,40 +421,6 @@ export default function TestingPage() {
                             </div>
                         ) : null}
                     </div>
-
-                    <div className="rounded-[28px] border border-white/70 bg-white/90 p-6 shadow-lg shadow-slate-200/50">
-                        <h2 className="text-xl font-bold text-slate-900">ML Status</h2>
-                        <p className="mt-1 text-sm text-slate-500">
-                            ระบบจะประเมินความหนาแน่นจากสถานะปัจจุบันของช่องจอด
-                        </p>
-
-                        {prediction ? (
-                            <div className={`mt-5 rounded-3xl border p-5 ${getPredictionTone(prediction.prediction)}`}>
-                                <div className="text-xs uppercase tracking-[0.2em]">Prediction</div>
-                                <div className="mt-2 text-2xl font-black">
-                                    {prediction.prediction.replace("_", " ").toUpperCase()}
-                                </div>
-                                <div className="mt-4 space-y-2 text-sm">
-                                    <div>Confidence: {(prediction.confidence * 100).toFixed(1)}%</div>
-                                    <div>Occupancy: {prediction.occupancy_rate}</div>
-                                    <div>
-                                        Available: {prediction.available_slots}/{prediction.total_slots}
-                                    </div>
-                                    <div>Model: {prediction.model}</div>
-                                </div>
-                            </div>
-                        ) : (
-                            <div className="mt-5 rounded-3xl border border-dashed border-slate-200 bg-slate-50 p-6 text-sm text-slate-500">
-                                ยังไม่มีผล prediction กดปุ่ม <span className="font-semibold text-slate-800">Run ML Summary</span> เพื่อทดสอบ
-                            </div>
-                        )}
-
-                        <div className="mt-5 rounded-3xl bg-slate-50 p-5 text-sm text-slate-600">
-                            <div className="font-semibold text-slate-800">Status cycle</div>
-                            <div className="mt-2">คลิกที่ช่องจอดเพื่อวนสถานะ:</div>
-                            <div className="mt-1">available → occupied → maintenance → available</div>
-                        </div>
-                    </div>
                 </section>
 
                 <section className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
@@ -482,15 +448,6 @@ export default function TestingPage() {
                             </button>
                         </div>
 
-                        <label className="mt-4 flex items-center gap-3 rounded-2xl bg-slate-50 px-4 py-3 text-sm text-slate-700">
-                            <input
-                                type="checkbox"
-                                checked={applyMLToBackend}
-                                onChange={(event) => setApplyMLToBackend(event.target.checked)}
-                                className="h-4 w-4 rounded border-slate-300 text-sky-600"
-                            />
-                            Apply ML result back to backend slot statuses
-                        </label>
 
                         <div className="mt-6 grid gap-4 lg:grid-cols-2">
                             <div className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50">
