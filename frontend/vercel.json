@@ -1,6 +1,12 @@
 {
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "https://your-backend-url.com/api/$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/api/(.*)",
+      "destination": "https://cs242-tuparkinglocation-backend-1.onrender.com/api/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }
