@@ -1,4 +1,38 @@
-# TUparkingLocation
+# Pain Point
+  “Students may have difficulty finding available parking areas on campus.”
+  # Problem
+  1. หาที่จอดรถยาก (avilable / not available)
+  2. ไม่รู้ว่าที่ไหนจอดได้บ้าง (นักศึกษา/บุคคลากร)
+  3. ไม่รู้ตำแหน่งที่จอดแบบชัดเจน
+  4. ไม่มีประชาสัมพันธ์เกี่ยวกับที่จอดรถ
+# Solution
+    1.Parking location : พิกัดที่จอดรถ
+    2.Parking Status : สถานะของที่จอดรถ 
+      (available / not available / pending)
+    3.Parking Type : ที่จอดรถสำหรับผู้ใช้งานแต่ละกลุ่ม
+      (general / staff / handicaps)
+# Beneficial
+  1. ประหยัดเวลาในการหาที่จอดรถ
+  2. ลดความเสี่ยงในการจอดผิดที่
+  3. เข้าถึงข้อมูลที่จอดรถแบบชัดเจน
+
+# System Architecture
+<img width="1919" height="1079" alt="Screenshot 2026-04-30 205740" src="https://github.com/user-attachments/assets/eb52f2a8-932d-4819-b68a-c4ca169425a4" />
+  
+# Class Diagram(UML)
+<img width="1746" height="1022" alt="Screenshot 2026-04-30 205255" src="https://github.com/user-attachments/assets/3f6cb5df-d937-4e87-bb31-cb9f45813eb2" />
+  
+# ผลการดำเนินงาน
+  Frontend: https://github.com/ShinyG1thub/CS242-TUParkingLocation-Frontend.git
+  Backend: https://github.com/ShinyG1thub/CS242-TUParkingLocation-Backend.git
+  ML: https://colab.research.google.com/drive/1MBmaJ4TmNKlHyuM3Qv_dYDqaFrnk1TRa?usp=sharing
+# แจกแจงงานที่สมาชิกแต่ละคน
+1.นายอธิชล เรืองหิรัญ (6709681172): Frontend + Backend
+2.นายกรกฎ หาญมนตรี (6709616376): Machine Learning + Document
+3.นายพัชรพล คุณวโรตม์ (6709616715): Backend
+4.นายชยากร จิตรอุดมกุล (6709616400): Backend
+5.นายชัชวีร์ ไทยเจริญ (6709616426): Frontend
+
 
 ระบบเว็บสำหรับดูสถานะที่จอดรถ โดยแยก frontend และ backend ออกจากกัน:
 - Backend: Flask + SQLAlchemy
