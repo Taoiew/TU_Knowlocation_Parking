@@ -20,15 +20,16 @@
 <img width="1919" height="1079" alt="Screenshot 2026-04-30 205740" src="https://github.com/user-attachments/assets/eb52f2a8-932d-4819-b68a-c4ca169425a4" />
   
 # Class Diagram(UML)
-<img width="1746" height="1022" alt="Screenshot 2026-04-30 205255" src="https://github.com/user-attachments/assets/3f6cb5df-d937-4e87-bb31-cb9f45813eb2" />
+<img width="1265" height="653" alt="678422613_1296734052553127_168391006614671707_n" src="https://github.com/user-attachments/assets/5f42bef3-0a7e-48f7-991e-d66607fe59b0" />
   
 # ผลการดำเนินงาน
   Frontend: https://github.com/ShinyG1thub/CS242-TUParkingLocation-Frontend.git
   Backend: https://github.com/ShinyG1thub/CS242-TUParkingLocation-Backend.git
   ML: https://colab.research.google.com/drive/1MBmaJ4TmNKlHyuM3Qv_dYDqaFrnk1TRa?usp=sharing
+  Implementation: https://github.com/Taoiew/TU_Knowlocation_Parking.git
 # แจกแจงงานที่สมาชิกแต่ละคน
 1.นายอธิชล เรืองหิรัญ (6709681172): Frontend + Backend
-2.นายกรกฎ หาญมนตรี (6709616376): Machine Learning + Document
+2.นายกรกฎ หาญมนตรี (6709616376): Machine Learning + Implementation
 3.นายพัชรพล คุณวโรตม์ (6709616715): Backend
 4.นายชยากร จิตรอุดมกุล (6709616400): Backend
 5.นายชัชวีร์ ไทยเจริญ (6709616426): Frontend
@@ -74,10 +75,47 @@ URLs:
 - Testing page: `http://localhost:5173/test`
 - Backend API: `http://localhost:5000/api/parking/areas`
 
+## Run With Docker
+
+This setup runs 3 services:
+- `frontend`: React + Vite on port `5173`
+- `backend`: Flask + Gunicorn on port `5000`
+- `db`: PostgreSQL on port `5432`
+
+Create or edit `.env` from `.env.example` if you need different ports or database credentials.
+
+```bash
+docker compose up --build
+```
+
+URLs:
+- Frontend: `http://localhost:5173`
+- Testing page: `http://localhost:5173/test`
+- Backend health check: `http://localhost:5000/api/health`
+- ML health check: `http://localhost:5000/api/ml/health`
+- ML summary prediction: `POST http://localhost:5000/api/parking/areas/1/ml-predict`
+- Backend API: `http://localhost:5000/api/parking/areas`
+
+Open the frontend from the host port, for example `http://localhost:5173`.
+Do not use the Vite container network URL such as `http://172.x.x.x:5173`; that address is only for Docker's internal network.
+For ngrok demos, `.ngrok-free.dev` is allowed by Vite through `VITE_ALLOWED_HOSTS`.
+
+Stop services:
+
+```bash
+docker compose down
+```
+
+Reset database data:
+
+```bash
+docker compose down -v
+```
+
 ## ML Model Files
 
 โค้ด ML อยู่ใน repo แต่ไฟล์ model weights ขนาดใหญ่จะไม่ถูกเก็บใน Git เพราะเกิน limit ของ GitHub
-
+resource: https://drive.google.com/drive/folders/1TVxRAQsIOhJNHmLgDyn_ioq2BS7dwxKI?usp=sharing
 ไฟล์ที่ต้องเตรียมเองถ้าจะใช้ ML image detection:
 - `ML/yolov8x.pt`
 - หรือ `ML/parking_model.pt`

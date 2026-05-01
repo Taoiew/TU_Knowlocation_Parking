@@ -420,6 +420,23 @@ export default function TestingPage() {
                                 </button>
                             </div>
                         ) : null}
+
+                        {prediction ? (
+                            <div className={`mt-5 rounded-3xl border p-5 ${getPredictionTone(prediction.prediction)}`}>
+                                <div className="text-xs font-bold uppercase tracking-[0.18em]">
+                                    ML Summary
+                                </div>
+                                <div className="mt-2 text-2xl font-black capitalize">
+                                    {prediction.prediction.replace("_", " ")}
+                                </div>
+                                <div className="mt-3 grid gap-2 text-sm md:grid-cols-4">
+                                    <div>Confidence: {(prediction.confidence * 100).toFixed(0)}%</div>
+                                    <div>Occupancy: {prediction.occupancy_rate}</div>
+                                    <div>Available: {prediction.available_slots}/{prediction.total_slots}</div>
+                                    <div>Model: {prediction.model}</div>
+                                </div>
+                            </div>
+                        ) : null}
                     </div>
                 </section>
 
@@ -447,6 +464,16 @@ export default function TestingPage() {
                                 Analyze Image
                             </button>
                         </div>
+
+                        <label className="mt-4 flex items-center gap-3 text-sm font-medium text-slate-700">
+                            <input
+                                type="checkbox"
+                                checked={applyMLToBackend}
+                                onChange={(event) => setApplyMLToBackend(event.target.checked)}
+                                className="h-4 w-4 rounded border-slate-300 text-sky-600"
+                            />
+                            Sync image detection result to backend slots
+                        </label>
 
 
                         <div className="mt-6 grid gap-4 lg:grid-cols-2">
